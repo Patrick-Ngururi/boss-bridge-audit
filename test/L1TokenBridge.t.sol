@@ -39,22 +39,22 @@ contract L1BossBridgeTest is Test {
         vm.stopPrank();
     }
 
-    function testDeployerOwnsBridge() public {
+    function testDeployerOwnsBridge() public view {
         address owner = tokenBridge.owner();
         assertEq(owner, deployer);
     }
 
-    function testBridgeOwnsVault() public {
+    function testBridgeOwnsVault() public view {
         address owner = vault.owner();
         assertEq(owner, address(tokenBridge));
     }
 
-    function testTokenIsSetInBridgeAndVault() public {
+    function testTokenIsSetInBridgeAndVault() public view {
         assertEq(address(tokenBridge.token()), address(token));
         assertEq(address(vault.token()), address(token));
     }
 
-    function testVaultInfiniteAllowanceToBridge() public {
+    function testVaultInfiniteAllowanceToBridge() public view {
         assertEq(token.allowance(address(vault), address(tokenBridge)), type(uint256).max);
     }
 
@@ -88,7 +88,7 @@ contract L1BossBridgeTest is Test {
         tokenBridge.unpause();
     }
 
-    function testInitialSignerWasRegistered() public {
+    function testInitialSignerWasRegistered() public view {
         assertTrue(tokenBridge.signers(operator.addr));
     }
 
