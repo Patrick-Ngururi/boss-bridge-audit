@@ -20,6 +20,7 @@ contract TokenFactory is Ownable {
      * @param symbol The symbol of the new token
      * @param contractBytecode The bytecode of the new token
      */
+    // @Audit-Question: Are we sure we talk to omit this from scope? This is scary.
     function deployToken(string memory symbol, bytes memory contractBytecode) public onlyOwner returns (address addr) {
         assembly {
             addr := create(0, add(contractBytecode, 0x20), mload(contractBytecode))
