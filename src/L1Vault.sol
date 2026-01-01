@@ -12,10 +12,12 @@ import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 contract L1Vault is Ownable {
     IERC20 public token;
 
+    // @Audit-Note: One vault per token is intended.
     constructor(IERC20 _token) Ownable(msg.sender) {
         token = _token;
     }
 
+    // @Audit-Question: Why not just hard-code the approval to only the bridge?
     function approveTo(address target, uint256 amount) external onlyOwner {
         token.approve(target, amount);
     }
