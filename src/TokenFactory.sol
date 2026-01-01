@@ -23,6 +23,8 @@ contract TokenFactory is Ownable {
     // @Audit-Question: Are we sure we talk to omit this from scope? This is scary.
     function deployToken(string memory symbol, bytes memory contractBytecode) public onlyOwner returns (address addr) {
         assembly {
+             // @Audit-High: This won't work on zkSync Era!
+            // Docs Reference: https://docs.zksync.io/build/developer-reference/differences-with-ethereum.html#create-create2
             addr := create(0, add(contractBytecode, 0x20), mload(contractBytecode))
         }
         s_tokenToAddress[symbol] = addr;
