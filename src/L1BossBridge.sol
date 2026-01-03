@@ -54,6 +54,7 @@ contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
         _unpause();
     }
 
+    // @Audit-Question: What would happen if a signer was disabled mid-flight?
     function setSigner(address account, bool enabled) external onlyOwner {
         signers[account] = enabled;
     }
