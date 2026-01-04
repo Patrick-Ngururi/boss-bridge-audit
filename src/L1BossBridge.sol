@@ -27,6 +27,7 @@ import { L1Vault } from "./L1Vault.sol";
 contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
+    // @Audit-Informational: Unchanged state variables could be declared as constant
     uint256 public DEPOSIT_LIMIT = 100_000 ether;
 
     IERC20 public immutable token;
