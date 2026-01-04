@@ -10,6 +10,7 @@ import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 /// @notice It will approve the bridge to move money in and out of this contract
 /// @notice It's owner should be the bridge
 contract L1Vault is Ownable {
+    // @Audit-Informational: Should be immutable
     IERC20 public token;
 
     // @Audit-Note: One vault per token is intended.
