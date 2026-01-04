@@ -71,6 +71,7 @@ contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
      */
 
     // @Audit-High: Arbitrary transferFrom risks any approved tokens
+    // @Audit-high: Infinite Mint - if the vault approvedthe bridge ... can a user steal funds from the vault?
     function depositTokensToL2(address from, address l2Recipient, uint256 amount) external whenNotPaused {
         if (token.balanceOf(address(vault)) + amount > DEPOSIT_LIMIT) {
             revert L1BossBridge__DepositLimitReached();
