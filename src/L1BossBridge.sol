@@ -115,6 +115,7 @@ contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
      * @param s The s value of the signature
      * @param message The message/data to be sent to L1 (can be blank)
      */
+    // @Audit-high: Exploit - Signature Replay 
     function sendToL1(uint8 v, bytes32 r, bytes32 s, bytes memory message) public nonReentrant whenNotPaused {
         address signer = ECDSA.recover(MessageHashUtils.toEthSignedMessageHash(keccak256(message)), v, r, s);
 
