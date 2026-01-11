@@ -60,7 +60,7 @@ Consider introducing checks for `msg.sender` to ensure the recipient of the mone
 <details><summary>1 Found Instances</summary>
 
 
-- Found in src/L1BossBridge.sol [Line: 70](src/L1BossBridge.sol#L70)
+- Found in src/L1BossBridge.sol [Line: 75](src/L1BossBridge.sol#L75)
 
 	```solidity
 	    function depositTokensToL2(address from, address l2Recipient, uint256 amount) external whenNotPaused {
@@ -85,19 +85,19 @@ Contracts have owners with privileged rights to perform admin tasks and need to 
 	contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
 	```
 
-- Found in src/L1BossBridge.sol [Line: 49](src/L1BossBridge.sol#L49)
+- Found in src/L1BossBridge.sol [Line: 50](src/L1BossBridge.sol#L50)
 
 	```solidity
 	    function pause() external onlyOwner {
 	```
 
-- Found in src/L1BossBridge.sol [Line: 53](src/L1BossBridge.sol#L53)
+- Found in src/L1BossBridge.sol [Line: 54](src/L1BossBridge.sol#L54)
 
 	```solidity
 	    function unpause() external onlyOwner {
 	```
 
-- Found in src/L1BossBridge.sol [Line: 57](src/L1BossBridge.sol#L57)
+- Found in src/L1BossBridge.sol [Line: 59](src/L1BossBridge.sol#L59)
 
 	```solidity
 	    function setSigner(address account, bool enabled) external onlyOwner {
@@ -109,7 +109,7 @@ Contracts have owners with privileged rights to perform admin tasks and need to 
 	contract L1Vault is Ownable {
 	```
 
-- Found in src/L1Vault.sol [Line: 19](src/L1Vault.sol#L19)
+- Found in src/L1Vault.sol [Line: 22](src/L1Vault.sol#L22)
 
 	```solidity
 	    function approveTo(address target, uint256 amount) external onlyOwner {
@@ -121,7 +121,7 @@ Contracts have owners with privileged rights to perform admin tasks and need to 
 	contract TokenFactory is Ownable {
 	```
 
-- Found in src/TokenFactory.sol [Line: 23](src/TokenFactory.sol#L23)
+- Found in src/TokenFactory.sol [Line: 24](src/TokenFactory.sol#L24)
 
 	```solidity
 	    function deployToken(string memory symbol, bytes memory contractBytecode) public onlyOwner returns (address addr) {
@@ -138,13 +138,13 @@ ERC20 functions may not behave as expected. For example: return values are not a
 <details><summary>2 Found Instances</summary>
 
 
-- Found in src/L1BossBridge.sol [Line: 99](src/L1BossBridge.sol#L99)
+- Found in src/L1BossBridge.sol [Line: 105](src/L1BossBridge.sol#L105)
 
 	```solidity
 	                abi.encodeCall(IERC20.transferFrom, (address(vault), to, amount))
 	```
 
-- Found in src/L1Vault.sol [Line: 20](src/L1Vault.sol#L20)
+- Found in src/L1Vault.sol [Line: 24](src/L1Vault.sol#L24)
 
 	```solidity
 	        token.approve(target, amount);
@@ -161,7 +161,7 @@ Check for `address(0)` when assigning values to address state variables.
 <details><summary>1 Found Instances</summary>
 
 
-- Found in src/L1Vault.sol [Line: 16](src/L1Vault.sol#L16)
+- Found in src/L1Vault.sol [Line: 18](src/L1Vault.sol#L18)
 
 	```solidity
 	        token = _token;
@@ -178,13 +178,13 @@ If a function is marked public but is not used internally, consider marking it a
 <details><summary>2 Found Instances</summary>
 
 
-- Found in src/TokenFactory.sol [Line: 23](src/TokenFactory.sol#L23)
+- Found in src/TokenFactory.sol [Line: 24](src/TokenFactory.sol#L24)
 
 	```solidity
 	    function deployToken(string memory symbol, bytes memory contractBytecode) public onlyOwner returns (address addr) {
 	```
 
-- Found in src/TokenFactory.sol [Line: 31](src/TokenFactory.sol#L31)
+- Found in src/TokenFactory.sol [Line: 34](src/TokenFactory.sol#L34)
 
 	```solidity
 	    function getTokenAddressFromSymbol(string memory symbol) public view returns (address addr) {
@@ -236,7 +236,7 @@ Large literal values multiples of 10000 can be replaced with scientific notation
 <details><summary>2 Found Instances</summary>
 
 
-- Found in src/L1BossBridge.sol [Line: 30](src/L1BossBridge.sol#L30)
+- Found in src/L1BossBridge.sol [Line: 31](src/L1BossBridge.sol#L31)
 
 	```solidity
 	    uint256 public DEPOSIT_LIMIT = 100_000 ether;
@@ -259,7 +259,7 @@ State variables that are not updated following deployment should be declared con
 <details><summary>1 Found Instances</summary>
 
 
-- Found in src/L1BossBridge.sol [Line: 30](src/L1BossBridge.sol#L30)
+- Found in src/L1BossBridge.sol [Line: 31](src/L1BossBridge.sol#L31)
 
 	```solidity
 	    uint256 public DEPOSIT_LIMIT = 100_000 ether;
@@ -276,19 +276,19 @@ There are state variable changes in this function but no event is emitted. Consi
 <details><summary>3 Found Instances</summary>
 
 
-- Found in src/L1BossBridge.sol [Line: 57](src/L1BossBridge.sol#L57)
+- Found in src/L1BossBridge.sol [Line: 59](src/L1BossBridge.sol#L59)
 
 	```solidity
 	    function setSigner(address account, bool enabled) external onlyOwner {
 	```
 
-- Found in src/L1BossBridge.sol [Line: 91](src/L1BossBridge.sol#L91)
+- Found in src/L1BossBridge.sol [Line: 97](src/L1BossBridge.sol#L97)
 
 	```solidity
 	    function withdrawTokensToL1(address to, uint256 amount, uint8 v, bytes32 r, bytes32 s) external {
 	```
 
-- Found in src/L1BossBridge.sol [Line: 112](src/L1BossBridge.sol#L112)
+- Found in src/L1BossBridge.sol [Line: 119](src/L1BossBridge.sol#L119)
 
 	```solidity
 	    function sendToL1(uint8 v, bytes32 r, bytes32 s, bytes memory message) public nonReentrant whenNotPaused {
@@ -305,7 +305,7 @@ State variables that are only changed in the constructor should be declared immu
 <details><summary>1 Found Instances</summary>
 
 
-- Found in src/L1Vault.sol [Line: 13](src/L1Vault.sol#L13)
+- Found in src/L1Vault.sol [Line: 14](src/L1Vault.sol#L14)
 
 	```solidity
 	    IERC20 public token;
@@ -322,7 +322,7 @@ Function returns a value but it is ignored. Consider checking the return value.
 <details><summary>1 Found Instances</summary>
 
 
-- Found in src/L1Vault.sol [Line: 20](src/L1Vault.sol#L20)
+- Found in src/L1Vault.sol [Line: 24](src/L1Vault.sol#L24)
 
 	```solidity
 	        token.approve(target, amount);
