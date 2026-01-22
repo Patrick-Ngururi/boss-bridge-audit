@@ -127,7 +127,7 @@ contract L1BossBridge is Ownable, Pausable, ReentrancyGuard {
 
         // @Audit-Question: Slither detects an issue here, follow up
         // @Audit-high: Exploit: Low Level Call to Itself
-        // @Audit: Exploit: Gas Bomb
+        // @Audit-meduim: Exploit: Gas Bomb
         (bool success,) = target.call{ value: value }(data);
         if (!success) {
             revert L1BossBridge__CallFailed();
